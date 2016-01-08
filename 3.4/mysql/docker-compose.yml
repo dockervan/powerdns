@@ -1,0 +1,11 @@
+pdns:
+  build: .
+  links:
+    - mysql:db
+  ports:
+    - '53:53'
+
+mysql:
+  image: mysql
+  environment:
+    MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
