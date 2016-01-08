@@ -12,7 +12,7 @@ rm --recursive pdns.tar.bz2
 
 WORKDIR pdns
 
-RUN du -sh . && ./configure --with-modules="gmysql" && \
+RUN ./configure --with-modules="gmysql" && \
 make -j$(nproc) && \
 make install && \
 make clean
