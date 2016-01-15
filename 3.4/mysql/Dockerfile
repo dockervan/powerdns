@@ -4,8 +4,8 @@ MAINTAINER Sullivan SENECHAL <soullivaneuh@gmail.com>
 
 RUN apk add --no-cache --virtual .deps boost-serialization libstdc++ \
 && apk add --no-cache --virtual .build-deps tar file gcc g++ make autoconf boost-dev \
+&& apk add --no-cache --virtual .modules-build-deps cmake \
 
-&& apk add --no-cache --virtual .mysql-build-deps cmake \
 && wget http://dev.mysql.com/get/Downloads/Connector-C/mysql-connector-c-6.1.6-src.tar.gz -O mysql-connector-c.tar.gz \
 && mkdir mysql-connector-c && tar xf mysql-connector-c.tar.gz -C mysql-connector-c --strip-components 1 \
 && cd mysql-connector-c \
@@ -24,7 +24,7 @@ RUN apk add --no-cache --virtual .deps boost-serialization libstdc++ \
 && cd .. \
 && rm -r pdns \
 
-&& apk del .build-deps .mysql-build-deps
+&& apk del .build-deps .modules-build-deps
 
 ADD pdns.conf /usr/local/etc/pdns.conf
 
