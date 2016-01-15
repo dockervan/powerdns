@@ -1,0 +1,9 @@
+pdns:
+  image: powerdns:postgres
+  link:
+    - postgres:db
+  ports:
+    - '53:53'
+
+postgres:
+  image: postgres
