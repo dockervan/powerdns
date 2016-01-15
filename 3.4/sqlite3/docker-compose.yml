@@ -1,0 +1,4 @@
+pdns:
+  image: powerdns:sqlite3
+  ports:
+    - '53:53'
