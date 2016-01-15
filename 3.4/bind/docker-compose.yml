@@ -1,0 +1,4 @@
+pdns:
+  image: powerdns:bind
+  ports:
+    - '53:53'
