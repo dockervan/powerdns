@@ -1,5 +1,5 @@
 pdns:
-  build: .
+  image: powerdns
   links:
     - mysql:db
   ports:
