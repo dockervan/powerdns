@@ -5,6 +5,7 @@ services:
 
 env:
   - VERSION=3.4 VARIANT=bind
+  - VERSION=3.4 VARIANT=geoip
   - VERSION=3.4 VARIANT=mysql
   - VERSION=3.4 VARIANT=sqlite3
 
