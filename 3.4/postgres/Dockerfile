@@ -4,15 +4,15 @@ MAINTAINER Sullivan SENECHAL <soullivaneuh@gmail.com>
 
 RUN apk add --no-cache --virtual .deps boost-serialization libstdc++ \
 #&& apk add --no-cache --virtual .modules-deps sqlite-libs \
-&& apk add --no-cache --virtual .build-deps tar file gcc g++ make autoconf boost-dev \
+&& apk add --no-cache --virtual .build-deps openssl tar file gcc g++ make autoconf boost-dev \
 && apk add --no-cache --virtual .modules-build-deps postgresql-dev \
 
-&& wget http://downloads.powerdns.com/releases/pdns-3.4.7.tar.bz2 -O pdns.tar.bz2 \
+&& wget https://downloads.powerdns.com/releases/pdns-3.4.7.tar.bz2 -O pdns.tar.bz2 \
 && mkdir pdns && tar xf pdns.tar.bz2 -C pdns --strip-components 1 \
 && rm -rf pdns.tar.bz2 \
 && cd pdns \
 && ./configure --with-modules="gpgsql" \
-&& make -j$(getconf _NPROCESSORS_ONLN) && make install && make clean \
+&& make -j$(getconf _NPROCESSORS_ONLN) V=1 && make install && make clean \
 && cd .. \
 && rm -r pdns \
 
