@@ -1,0 +1,4 @@
+pdns:
+  image: powerdns:oracle
+  ports:
+    - '53:53'
