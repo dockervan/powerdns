@@ -1,0 +1,4 @@
+pdns:
+  image: powerdns:odbc
+  ports:
+    - '53:53'
