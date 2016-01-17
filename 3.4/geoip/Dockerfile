@@ -4,10 +4,10 @@ MAINTAINER Sullivan SENECHAL <soullivaneuh@gmail.com>
 
 RUN apk add --no-cache --virtual .deps boost-serialization libstdc++ \
 && apk add --no-cache --virtual .modules-deps geoip \
-&& apk add --no-cache --virtual .build-deps tar file gcc g++ make autoconf boost-dev \
+&& apk add --no-cache --virtual .build-deps openssl tar file gcc g++ make autoconf boost-dev \
 && apk add --no-cache --virtual .modules-build-deps cmake geoip-dev \
 
-&& wget http://github.com/jbeder/yaml-cpp/archive/release-0.5.3.tar.gz -O yaml-cpp.tar.gz \
+&& wget https://github.com/jbeder/yaml-cpp/archive/release-0.5.3.tar.gz -O yaml-cpp.tar.gz \
 && mkdir yaml-cpp && tar xf yaml-cpp.tar.gz -C yaml-cpp --strip-components 1 \
 && cd yaml-cpp \
 && mkdir build && cd build \
@@ -15,7 +15,7 @@ RUN apk add --no-cache --virtual .deps boost-serialization libstdc++ \
 && cd ../.. \
 && rm -r yaml-cpp \
 
-&& wget http://downloads.powerdns.com/releases/pdns-3.4.7.tar.bz2 -O pdns.tar.bz2 \
+&& wget https://downloads.powerdns.com/releases/pdns-3.4.7.tar.bz2 -O pdns.tar.bz2 \
 && mkdir pdns && tar xf pdns.tar.bz2 -C pdns --strip-components 1 \
 && rm -rf pdns.tar.bz2 \
 && cd pdns \
