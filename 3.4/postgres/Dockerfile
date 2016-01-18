@@ -11,6 +11,8 @@ RUN apk add --no-cache --virtual .deps boost-serialization libstdc++ \
 && mkdir pdns && tar xf pdns.tar.bz2 -C pdns --strip-components 1 \
 && rm -rf pdns.tar.bz2 \
 && cd pdns \
+&& wget https://github.com/PowerDNS/pdns/pull/1990.patch -O 1990.patch \
+&& patch < 1990.patch \
 && ./configure --with-modules="gpgsql" \
 && make -j$(getconf _NPROCESSORS_ONLN) V=1 && make install && make clean \
 && cd .. \
