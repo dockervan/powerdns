@@ -9,6 +9,11 @@ env:
   - VERSION=3.4 VARIANT=mysql
   - VERSION=3.4 VARIANT=sqlite3
 
+  - VERSION=4.0 VARIANT=bind
+  - VERSION=4.0 VARIANT=geoip
+  - VERSION=4.0 VARIANT=mysql
+  - VERSION=4.0 VARIANT=sqlite3
+
 before_script:
   - export REPO=dockervan/powerdns
   - docker pull $REPO:$VERSION-$VARIANT || true
@@ -21,6 +26,7 @@ after_success:
   - docker tag powerdns $REPO:$VERSION-$VARIANT
   - if [ "$VERSION" == "3.4" ]; then docker tag $REPO:$VERSION-$VARIANT $REPO:3-$VARIANT; fi
   - if [ "$VERSION" == "3.4" ]; then docker tag $REPO:$VERSION-$VARIANT $REPO:$VARIANT; fi
+  - if [ "$VERSION" == "4.0" ]; then docker tag $REPO:$VERSION-$VARIANT $REPO:4-$VARIANT; fi
   - docker images
   - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
   - if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then docker push $REPO; fi

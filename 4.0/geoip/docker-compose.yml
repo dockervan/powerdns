@@ -1,0 +1,6 @@
+pdns:
+  image: powerdns:geoip
+  ports:
+    - '53:53'
+  volumes:
+    - /usr/share/GeoIP:/usr/share/GeoIP:ro
